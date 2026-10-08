@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A tiny question</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 20px;
+
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+
+        background:
+            radial-gradient(
+                circle at top,
+                #fff8f5 0%,
+                #ffe8e8 45%,
+                #f8dada 100%
+            );
+
+        color: #2c2020;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 430px;
+
+        background: rgba(255, 255, 255, 0.95);
+
+        padding: 38px 28px;
+
+        border-radius: 28px;
+
+        text-align: center;
+
+        box-shadow:
+            0 20px 60px rgba(70, 30, 30, 0.15);
+
+        animation: appear 0.8s ease;
+    }
+
+    .emoji {
+        font-size: 52px;
+        margin-bottom: 12px;
+    }
+
+    h1 {
+        margin: 0 0 10px;
+
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .subtitle {
+        color: #806c6c;
+
+        margin-bottom: 22px;
+
+        line-height: 1.6;
+    }
+
+    .hint {
+        font-size: 14px;
+
+        color: #806c6c;
+
+        background: #faf3f3;
+
+        padding: 14px;
+
+        border-radius: 13px;
+
+        margin-bottom: 18px;
+
+        line-height: 1.6;
+    }
+
+    input {
+        width: 100%;
+
+        padding: 15px;
+
+        border: 1px solid #e2d4d4;
+
+        border-radius: 13px;
+
+        font-size: 16px;
+
+        outline: none;
+
+        text-align: center;
+    }
+
+    input:focus {
+        border-color: #9d7777;
+    }
+
+    button {
+        width: 100%;
+
+        margin-top: 12px;
+
+        padding: 15px;
+
+        border: none;
+
+        border-radius: 13px;
+
+        background: #2c2020;
+
+        color: white;
+
+        font-size: 16px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition:
+            transform 0.15s ease,
+            opacity 0.15s ease;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+
+    button:active {
+        transform: scale(0.97);
+    }
+
+    .error {
+        min-height: 22px;
+
+        margin-top: 10px;
+
+        color: #b33d3d;
+
+        font-size: 13px;
+    }
+
+    #question {
+        display: none;
+    }
+
+    .question {
+        font-size: 30px;
+
+        font-weight: 700;
+
+        line-height: 1.25;
+
+        margin: 22px 0;
+    }
+
+    .note {
+        color: #806c6c;
+
+        line-height: 1.7;
+
+        margin-bottom: 22px;
+    }
+
+    .message-button {
+        text-decoration: none;
+
+        display: block;
+
+        width: 100%;
+
+        padding: 15px;
+
+        border-radius: 13px;
+
+        background: #2c2020;
+
+        color: white;
+
+        font-size: 16px;
+
+        font-weight: 600;
+
+        transition: opacity 0.15s ease;
+    }
+
+    .message-button:hover {
+        opacity: 0.9;
+    }
+
+    .small-text {
+        margin-top: 16px;
+
+        font-size: 12px;
+
+        color: #a18d8d;
+    }
+
+    @keyframes appear {
+
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+</style>
+</head>
+
+<body>
+
+
+<!-- PASSWORD SCREEN -->
+
+<div class="card" id="login">
+
+    <div class="emoji">
+        ✨
+    </div>
+
+    <h1>
+        A tiny secret
+    </h1>
+
+    <div class="subtitle">
+        Someone left you a question.
+    </div>
+
+    <div class="hint">
+
+        💡 <strong>Hint:</strong>
+
+        <br>
+
+        The day you accepted my Instagram request.
+
+        <br>
+
+        Enter it in <strong>DD/MM/YYYY</strong> format.
+
+    </div>
+
+    <input
+        id="password"
+        type="password"
+        inputmode="numeric"
+        placeholder="DD/MM/YYYY"
+        autocomplete="off"
+    >
+
+    <button onclick="unlock()">
+        Unlock
+    </button>
+
+    <div
+        class="error"
+        id="error">
+    </div>
+
+</div>
+
+
+<!-- QUESTION SCREEN -->
+
+<div class="card" id="question">
+
+    <div class="emoji">
+        🤍
+    </div>
+
+    <div class="subtitle">
+        Okay... here goes.
+    </div>
+
+    <div class="question">
+        Hey Dinnerli, Would you be my forever Dinner?
+    </div>
+
+    <div class="note">
+
+        Maybe this is an unusual way to start a
+        conversation… but here we are. 👀
+
+        <br><br>
+        But for now, shall we go for a coffee or something? 
+        If you have an answer, you know where to find me. 🙂
+
+    </div>
+
+
+    <!-- CHANGE THIS INSTAGRAM USERNAME -->
+
+    <a
+        class="message-button"
+        href="https://instagram.com/__dinod__"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Message me 👀
+    </a>
+
+
+    <div class="small-text">
+        No pressure. 🙂
+    </div>
+
+</div>
+
+
+<script>
+
+const PASSWORD = "04102026";
+
+
+function unlock() {
+
+    const entered =
+        document
+        .getElementById("password")
+        .value
+        .trim()
+        .replaceAll("/", "");
+
+
+    if (entered === PASSWORD) {
+
+        document
+        .getElementById("login")
+        .style.display = "none";
+
+
+        document
+        .getElementById("question")
+        .style.display = "block";
+
+    }
+
+    else {
+
+        document
+        .getElementById("error")
+        .textContent =
+            "Hmm... check the date again 👀";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
